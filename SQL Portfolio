@@ -1,0 +1,40 @@
+-- Create a jewlery store database.
+
+ /**Jewlery**/
+ CREATE TABLE jewelry_store (item_name TEXT PRIMARY KEY, category TEXT, 
+ material TEXT, price_USD INTEGER, in_stock INTEGER);
+
+ INSERT INTO 
+ jewelry_store
+ VALUES 
+ ('Diamond Ring', 'Rings', '14K Gold', 2000, 10),
+ ('Pearl Earrings', 'Earrings', 'Sterling Silver', 150, 20),
+ ('Emerald Necklace', 'Necklaces', 'White Gold', 3000, 5),
+ ('Sapphire Bracelet', 'Bracelets', 'White Gold', 2500, 8),
+ ('Topaz Pendant', 'Necklaces', 'Rose Gold', 800, 15),
+ ('Amethyst Ring', 'Rings', 'Platinum', 1200, 12),
+ ('Ruby Stud Earrings', 'Earrings', 'Yellow Gold', 1800, 7),
+ ('Garnet Bracelet', 'Bracelets', 'Sterling Silver', 500, 18),
+ ('Aquamarine Pendant', 'Necklaces', '14K Gold', 900, 10),
+ ('Opal Ring', 'Rings', 'White Gold', 1400, 6),
+ ('Tourmaline Earrings', 'Earrings', 'Rose Gold', 600, 13),
+ ('Peridot Bracelet', 'Bracelets', '18K Gold', 1000, 9),
+ ('Citrine Pendant', 'Necklaces', 'Platinum', 1100, 8),
+ ('Tanzanite Ring', 'Rings', '14K Gold', 2200, 5),
+ ('Alexandrite Earrings', 'Earrings', 'Yellow Gold', 1700, 11);
+
+
+ -- Display the database ordered by price. 
+ SELECT * FROM jewelry_store 
+ ORDER BY `price_USD` ASC;
+ 
+ 
+ -- What is the average price of a piece of jewlery in USD?
+ SELECT AVG(`price_USD`) AS `Average Price` FROM jewelry_store;
+
+
+ -- What are the top 3 most expensive jewelry items?
+ SELECT item_name, price_USD
+ FROM jewelry_store
+ ORDER BY price_USD desc
+ LIMIT 3
