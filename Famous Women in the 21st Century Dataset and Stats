@@ -1,0 +1,69 @@
+/* Dataset about famous women from 21st century */
+
+
+CREATE TABLE Famous_Women 
+(id INTEGER PRIMARY KEY,
+Name TEXT,
+Profession TEXT,
+Birth_year INTEGER,
+Country_of_birth TEXT);
+
+INSERT INTO Famous_Women
+VALUES
+(1,"J.K. Rowling","Novelist",1965,"UK"),
+(2,"Beyonce","Musician",1981,"USA"),
+(3,"Salley Rooney","Novelist",1991,"UK"),
+(4,"Halle Berry","Actress",1966,"USA"),
+(5,"Ariana Grande","Musician",1993,"USA"),
+(6,"Gertrude Elion","Chemist",1918,"USA"),
+(7,"Julia Roberts","Actress",1967,"USA");
+
+CREATE TABLE Famous_Works
+(id INTEGER PRIMARY KEY,
+Famous_Works TEXT);
+
+INSERT INTO Famous_Works
+VALUES
+("1","Harry Potter"),
+("2","Dangerously in Love"),
+("3","Normal People"),
+("4","Gothika"),
+("5","Thank U, Next."),
+("6","Mercaptopurine"),
+("7","Runaway Bride");
+
+CREATE TABLE Awards_and_Recognitions
+(name TEXT,
+Awards_and_Recognition TEXT);
+
+INSERT INTO Awards_and_Recognitions
+VALUES
+("J.K. Rowling", "Academy Award for Best Actress in a Leadership Role"),
+("Beyonce", "Grammy Award"),
+("Sally Mooney", "none"),
+("Halle Berry", "Academy Award"),
+("Ariana Grande", "Grammy Award"),
+("Gertrude Elion", "Nobel Prize in Medicine"),
+("Julia Roberts", "Peoples Choice Award");
+
+
+
+-- How many women were born in the UK?
+
+SELECT COUNT(*) as "Women Born in the UK"
+FROM Famous_Women
+WHERE Country_of_birth = 'UK';
+
+
+---- What women has the earliest birth year?
+SELECT *, MIN(birth_year) as Oldest_Woman 
+FROM famous_women
+
+
+-- What is the number of women who have won awards or recognitions in the novelist category?
+
+SELECT COUNT(*) as num_novelist_awards
+FROM Famous_Women fw
+JOIN Awards_and_Recognitions ar 
+ON fw.Name = ar.name
+WHERE fw.Profession = 'Novelist' AND ar.Awards_and_Recognition != 'none';
